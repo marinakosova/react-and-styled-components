@@ -1,24 +1,52 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import logo from './logo.svg';
+
+const Div = styled.div`
+background-color: pink;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
+
+const Input = styled.input`
+width: 40vw;
+`;
+
+const Button = styled.button`
+background-color: ${props => props.inputValue ? 'seagreen' : 'black'} ;
+border: 0;
+border-radius: 4px;
+color: white;
+margin-left: 0.5rem;
+`;
+
+const BlueButton = styled(Button)`
+background-color: blue;
+
+`;
 
 const App = () => {
+const [inputValue, setInputValue] = useState('');
+
+const handleChange = (e) => {
+  setInputValue(e.target.value);
+}
+
   return (
-    <div className="App">
+    <Div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Input type="text" 
+        onChange={handleChange} 
+        defaultValue={inputValue} 
+        />
+        <Button inputValue={inputValue}>Click Me</Button>
       </header>
-    </div>
+      <div>
+        <BlueButton>I Am Blue</BlueButton>
+      </div>
+    </Div>
   );
 }
 
