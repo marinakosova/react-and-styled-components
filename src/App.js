@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import {Button} from './Button';
 
 const Div = styled.div`
 background-color: pink;
@@ -12,19 +13,6 @@ align-items: center;
 
 const Input = styled.input`
 width: 40vw;
-`;
-
-const Button = styled.button`
-background-color: ${props => props.inputValue ? 'seagreen' : 'black'} ;
-border: 0;
-border-radius: 4px;
-color: white;
-margin-left: 0.5rem;
-`;
-
-const BlueButton = styled(Button)`
-background-color: blue;
-
 `;
 
 const App = () => {
@@ -41,11 +29,8 @@ const handleChange = (e) => {
         onChange={handleChange} 
         defaultValue={inputValue} 
         />
-        <Button inputValue={inputValue}>Click Me</Button>
+    <Button inputValue={inputValue} />
       </header>
-      <div>
-        <BlueButton>I Am Blue</BlueButton>
-      </div>
     </Div>
   );
 }
